@@ -1,0 +1,16 @@
+*
+!.gitignore
+!obj/
+obj/*
+!obj/UAVXF4V3Q/
+!obj/SPEEDYF4WINGMINIQ/
+obj/UAVXF4V3Q/*
+!obj/UAVXF4V3Q/*.bin
+obj/SPEEDYF4WINGMINIQ/*
+!obj/SPEEDYF4WINGMINIQ/*.bin
+!wiki/
+wiki/*
+!wiki/docs/
+wiki/docs/*
+!wiki/docs/*.md
+!wiki/docs/*.pdf
