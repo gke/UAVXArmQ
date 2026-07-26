@@ -9,7 +9,7 @@ and rate stabilisation and a failsafe return to home (RTH) capability using GPS.
 
 ## Introduction
 
-It is assumed you have read the UAVXGUI and UAVXArm32F4Startup wikis.
+It is assumed you have read the GCS Guide and UAVXArmQ Startup wikis.
 
 For non-multicopter aircraft you have the ability to **bypass** almost all of the UAVX functionality except the final mixing. By default **bypass** is assigned to Rx channel 8 but may be reassigned using the GUI. If you find that you do not have enough channels to assign one to bypass the default is **bypass disabled** so stabilisation is always on. 
 
@@ -22,7 +22,7 @@ rate control mode is selected.
 
 The default RTH Alt parameter is probably too low and could be doubled. When RTH is engaged the aircraft will return and **orbit** at this altitude, not hover obviously, so it needs to be clear of obstacles like trees, flag poles and buildings.
  
-**IMPORTANT**: By now you should know that any programming of flight controllers should be done with props OFF. Some changes to the aircraft type, Rx type/mode or Emulation mode etc. may require a reset so that the hardware can be reconfigured SAFELY. If there is no response to UAVXGUI commands then check the LEDs to see if they are all flashing. If they are then power cycle the board only after you have checked 
+**IMPORTANT**: By now you should know that any programming of flight controllers should be done with props OFF. Some changes to the aircraft type, Rx type/mode or Emulation mode etc. may require a reset so that the hardware can be reconfigured SAFELY. If there is no response to GCS commands then check the LEDs to see if they are all flashing. If they are then power cycle the board only after you have checked 
 that your aircraft matches the one selected. 
 
 ### PID Parameters
@@ -51,7 +51,7 @@ Any throws and exponential settings on the Tx are used however and need in some 
 
 UAVX uses a consistent internal represention for roll/pitch and yaw. It is important to check that the control surfaces react correctly to UAVX first then reverse the control sense of Tx channels where necessary.
 
-If the servo sense/direction is incorrect you may reverse it using the boxes in the RC parameter group in the GUI Parameters Window. The help window will tell you which of the six "servos" you are changing. 
+If the servo sense/direction is incorrect you may reverse it using the boxes in the RC parameter group in the Parameter Window. The help window will tell you which of the six "servos" you are changing. 
 The order of the boxes is Right Aileron/Elevon, Left Aileron/Elevon, Elevator, Rudder, Right Flap, Left Flap. 
 
 Remember parameters on the aircraft do not directly track, or match, any changes in the GUI. You must select WRITE for this to happen.
@@ -84,7 +84,7 @@ UAVX computes roll/pitch and yaw commands and these are mixed into the control s
 Yes it is not as sophisticated/complicated as some but works in most cases. ToDos: 
 
  * The current mixing is not general and could be improved to allow custom mixing formulae but maybe later.
- * Although aileron differential is in the code, and camber etc associated with gliders may be added, the number of parameters will have to be increased from the UAVP legacy 64.
+ * Although aileron differential is in the code, and camber etc associated with gliders may be added, the parameter set supports up to 128 float32 parameters.
 
 
 

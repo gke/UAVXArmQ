@@ -19,7 +19,7 @@ Aspect & UAVXArm32F4 (old) & UAVXArmQ (new) \\
 \endhead
 Internal attitude & Euler angles (roll, pitch, yaw) & Quaternion (q0, q1, q2, q3) \\
 Gimbal lock risk & Yes (singularity at 90\textdegree pitch) & No \\
-Computational cost & Lower (3 DOF) & Higher (4 DOF) \\
+Computational cost & Lower (quaternion multiply avoids sin/cos/asin/atan2) & Lower (same multiply, no trig) \\
 Sensor fusion & Complementary filter & Quaternion-based complementary filter \\
 \bottomrule
 \end{longtable}

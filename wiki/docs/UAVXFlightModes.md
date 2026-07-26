@@ -4,24 +4,23 @@ fontsize: 10pt
 ---
 # UAVX Navigation and Flight Modes #
 
-UAVX has several modes most of which are associated with navigation and general control of the aircraft's attitude. It also has a large number of UAVXGUI checkboxes in the UAVXGUI.
+UAVX has several modes most of which are associated with navigation and general control of the aircraft's attitude. It also has a number of parameters and checkboxes in the GCS.
 
 Use the "BOOTLOAD" button when disarmed to place UAVX in bootloader mode. This removes the necessity of linking the boot pins.
 
 ## How are Modes Controlled ##
 
-Some channel assignments deserve special mention. The first two are ALTERNATIVES and would normally use a potentiometer. AHNavSens ALWAYS overrides ArmAHNav therefore you should choose one or the other but not both.
+Some channel assignments deserve special mention.
 
-  * ArmAHNav: Above 25% motors are ARMED. Above 50% altitude hold is enabled. Above 70% Waypoint navigation is enabled (See below). 
-  * AHNavSens: Below 10% altitude hold is disabled.  Above 10% altitude hold is enabled and as you increase further the control action for position hold and waypoint navigation increase. You would normally use stick or switch ARMING if you use this and the Aux3 pin to enable or disable WP navigation. 
+  * NavQualification (Ch6 default): Controls arming, altitude hold, and waypoint navigation. In **switch arming** mode a physical arm switch gates arming; altitude hold and WP nav are always on when armed. In **Tx arming** mode a pot or 3-position switch provides progressive access: arm above 10%, altitude hold above 40% (only when InFlight), waypoint navigation above 60%.
   
-  * Fun/PH/RTH: The first position selects "Fun Fly" with all GPS navigation actions are disabled. In the middle position Position Hold is enabled. In the last position Return to Home is enabled. 
-  * Ang/Hrz/Rate: Selects Angle, Horizon or Rate mode respectively (Google elsewhere). Nav/PH/RTH overrides this setting.
-  * PassThru: disables angle and rate control completely in all aircraft except multicopters. Altitude hold is also disabled irrespective of the Nav/PH/RTH switch position.
+  * NavMode (Ch4 default): Three-position switch. First position selects "Fun Fly" with all GPS navigation disabled. Middle position enables Position Hold. Last position enables Return to Home.
+  * AttitudeMode (Ch5 default): Selects Angle or Rate mode respectively. Nav/PH/RTH overrides this setting.
+  * PassThru (Ch7 default): Disables angle and rate control completely in all aircraft except multicopters. Altitude hold is also disabled irrespective of the Nav/PH/RTH switch position.
  
 You may reassign these functions to other channels should you desire.
 
-There are several parameters and checkboxes associated with flight modes and navigation. UAVXGUI also describes their function in the text window.
+There are several parameters and checkboxes associated with flight modes and navigation. The GCS also describes their function in the help text.
  
   * Autoland: enables autolanding with multicopters (Fixed wing aircraft orbit the home position).
   * Use VRS Orbit: enables fast descents in all aircraft types. For multicopters this forces the aircraft to orbit while descending in an attempt to avoid VRS.
@@ -35,13 +34,13 @@ There are several parameters and checkboxes associated with flight modes and nav
   
 The following are not directly associated with flight control:
 
-  * Emulation: enables the emulation/simulation of aircraft in conjunction with UAVXGUI. The physics is **naive** so it should not be used for PID tuning.
+  * Emulation: enables the emulation/simulation of aircraft in conjunction with the GCS. The physics is **naive** so it should not be used for PID tuning.
   * Ext Inv: enables the use of inverted magnetometers integrated with some GPS units.
   * BLHeli: enables pass-through programming of BLHeli/SimonK ESCs when used in conjunction with BLHeliSuite.
 
 ## Startup Modes ##
 
-UAVX has several initialisation steps which are displayed in UAVXGUI. These are not in order! Use the "Say Alarms" button to determine current alarms.
+UAVX has several initialisation steps which are displayed in the GCS. These are not in order! Use the "Say Alarms" button to determine current alarms.
 
  * Starting (strt): Commencing arming startup sequence. If "Fast Start" checkbox is not checked then aicraft must be stationary. 
  * Warmup (wrm): Some sensors require a few seconds to stabilise so this is a short delay state. The baro is a strong syspect and so you should let the aircraft acclimitise to outside temperatures.
@@ -59,7 +58,7 @@ UAVX has several initialisation steps which are displayed in UAVXGUI. These are 
 	
 ## Navigation Modes ##
 
-The modes or navigation states are displayed in UAVXGUI.
+The modes or navigation states are displayed in the GCS.
 
  * HoldingStation (hold): Aircraft is attempting to hold the GPS position captured before selecting this mode using the "Nav/RTH" switch.
  * ReturningHome (rth): Aircraft is attempting to return to the launch point.
