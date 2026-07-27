@@ -4,19 +4,21 @@ fontsize: 10pt
 ---
 ## Introduction ##
 
-This is the evolving setup page for the Arm version of UAVX. We will try to keep explanations concise. If you have flown UAVX then most of this is familiar as we have deliberately scaled the parameters and kept the look and feel of those you are familiar with so you can concentrate on flying.
+This is the evolving setup page for the Arm version of UAVX. We will try to keep explanations concise. If you have flown UAVX then most of this is familiar as we have deliberately scaled the parameters and kept the look and feel of UAVPSet and UAVXGS to those you are familiar with so you can concentrate on flying.
 
-UAVXArmQ supports many different airframe types from octocopters, through helis out to conventional aircraft. UAVX has done this for several years. For fixed wing aircraft see the UAVXFixedWing supplemental wiki after reading this.
+A Python GCS reimplementation (UAVXGS, in `uavx-python/src/`) is available alongside the legacy Java UAVXGUI and UAVPSet. It provides parameter management, telemetry display, and mission planning. All references to UAVXGUI below apply equally to the Python GCS unless noted.
 
-#### UAVXArmQ Board ####
+UAVXArm32F4 supports many different airframe types from octocopters, through helis out to conventional aircraft. UAVX has done this for several years. For fixed wing aircraft see the UAVXFixedWing supplemental wiki after reading this.
+
+#### UAVXArm32F4 Board ####
 
 ![Uavx-nanoV4](graphics/Uavx-nanoV4.png)
 
-You should receive your board loaded with the latest firmware. You will be able to load firmware updates later — see the UAVXArmQLoadingFirmware Wiki.
+You should receive your board loaded with firmware compatible with UAVXGUI. You definitely should look at the UAVXGUI before you go any further. You will be able to load firmware updates later - see the UAVXArm32F4LoadingFirmware Wiki.
 
 ### Step 1 ###
 
-Mount the board on your favourite frame oriented in the direction of forward flight. So if you are flying +Mode point the board along the K1 motor arm. If you are flying XMode point the board between the K1 and K3 motor arms. Select the desired configuration in UAVXGS using the airframe pulldown. We will assume from now that you are flying X-Mode which has become the most common as it allows cameras a clear forward view.
+Mount the board on your favourite frame oriented in the direction of forward flight. So if you are flying +Mode point the board along the K1 motor arm. If you are flying XMode point the board between the K1 and K3 motor arms. Select the desired configuration in UAVPSet using the airframe pulldown. We will assume from now that you are flying X-Mode which has become the most common as it allows cameras a clear forward view.
 
 Take all the the shorting links (if any) off the board. Connect up an arming switch between the Arming pin and the adjacent Ground pin.
 
@@ -28,11 +30,11 @@ The Red light should be on and the Yellow LED should be flashing once a second i
 
 ### Step 2 ###
 
-Download the GCS from https://github.com/gke/UAVXGS and install it.
+Download the software package from the downloads area and install UAVXGUI.
 
 Connect the adapter lead to the board and then to a USB port on your computer.
 
-Start UAVXGS and check that you have the appropriate serial port selected and that the baud rate is set to 115200.
+Start UAVXGUI and check that you have the appropriate COM port selected and that the baud rate is set to 115Kbaud.
 
 Select the parameters button and read the current parameters which will be the defaults.
 
@@ -40,23 +42,23 @@ The default parameters were obtained from flights by Ken & Jim. These are a good
 
 ### Step 3 (Rx) ###
 
-From now on any changes you make to parameters in UAVXGS must be followed by selecting the **Write Config** icon. Some parameter changes involve an electrical reconfiguration of the board so you will occasionally see all LEDs flashing — cycle the power and this should allow the board to complete the reconfiguration.
+From now on any changes you make to parameters in UAVXGUI must be followed by selecting the **Write Config** icon. Some parameter changes involve an electrical reconfiguration of the board so you will occasionally see all LEDs flashing - cycle the power and this should allow the board to complete the reconfiguration.
 
 Connect a 5V supply to any of the M or Rx centre pins. This will power your Rx as centre pins of all of the M and Rx pins are connected together. In the past this would have been ONE of the ESC BECs. More recently a seperate 5V switching UBEC is used.
 
-If you have a a Rx (e.g. FrSky) that supports Compound PPM (CPPM) connect it to Rx1. For CPPM you must specify the number of channels your Rx is receiving using UAVXGS.
+If you have a a Rx (e.g. FrSky) that supports Compound PPM (CPPM) connect it to Rx1. For CPPM you must specify the number of channels your Rx is receiving using UAVXGUI.
 
 If you have an Rx that uses parallel PPM then connect it to Rx1 upwards USUALLY in the order Throttle, Aileron, Elevator, Rudder, Gear, Aux1, Aux2 etc.. You need a minimum of 7 channels for full functionality.
 
-For parallel PPM using UAVXGS set the number of Rx channels you have actually connected to a maximum of 8. If you are using a CPPM or UART connected Rx protocol such as as SBus (Preferred) then more channels are available.
+For parallel PPM using UAVXGUI set the number of Rx channels you have actually connected to a maximum of 8. If you are using a CPPM or UART connected Rx protocol such as as SBus (Preferred) then more channels are available.
 
 You can fly with a minimum of 4 channels Throttle, Aileron, Elevator, Rudder. If you do so then you will have altitude hold but no navigation capability.
 
-You may re-assign the channels using the selectors in UAVXGS. So if your throttle is on Channel 3 for example then setup the pulldowns appropriately.
+You may re-assign the channels using the selectors in UAVXGUI. So if your throttle is on Channel 3 for example then setup the pulldowns appropriately.
 
 Some channels have multiple functions. You should read UAVXFlightModes.
  
-Go to the main GCS page and turn on your Tx. Stir the Tx sticks and adjust the endpoints and neutral values of those channels that turn orange.
+Go to the main UAVXGUI page and turn on your Tx. Stir the Tx sticks and adjust the endpoints and neutral values of those channels that turn orange.
 
 The Green LED should be on and Yellow LED flashing every second.
 
@@ -70,9 +72,9 @@ Get a decent spirit level and even then turn it around to make sure it reads lev
 
 Lock the aircraft down so it does not move and recheck it is level.
 
-Power up with UAVXGS connected.  Select the CalIMU button which will be Red. You will see the blue LED start to flash — it has already taken the first set of readings and is waiting for the temperature to rise to take the second set.  Get a hair dryer and VERY SLOWLY warm up the board — put your hand close to the board to sense how hot the air is. If it is too hot for your hand it is too hot for the board! You only need to change its temperature by 20 Celsius all up so don't melt the board!  There is a delay as the heat gets into the MPU6xxx package so slowly/slowly until the blue LED stops flashing and you are done. The CalIMU button should go Green. Obviously it is better to do the calibration so it covers the range of temperatures you are likely to be flying in.
+Power up with UAVGUI connected.  Select the CalIMU button which will be Red. You will see the blue LED start to flash - it has already taken the first set of readings and is waiting for the temperature to rise to take the second set.  Get a hair dryer and VERY SLOWLY warm up the board - put your hand close to the board to sense how hot the air is. If it is too hot for your hand it is too hot for the board! You only need to change its temperature by 20 Celsius all up so don't melt the board!  There is a delay as the heat gets into the MPU6xxx package so slowly/slowly until the blue LED stops flashing and you are done. The CalIMU button should go Green. Obviously it is better to do the calibration so it covers the range of temperatures you are likely to be flying in.
 
-Once again you only need to do this once or when loading the defaults or if you change the gyro selection pulldown — it should be on UAVXArmQ unless you are using analog gyros.
+Once again you only need to do this once or when loading the defaults or if you change the gyro selection pulldown - it should be on UAVXArm32 unless you are using analog gyros.
 
 The Green LED and Yellow LEDs should be on.
 
@@ -120,7 +122,7 @@ Note: If you plan to run camera gimbals then it is worth considering buying a hi
 
 Put the aircraft on the ground. Leave the props OFF and arm the flight controller using the method chosen in the parameters (switch, roll stick, yaw stick).
 
-You will see a dancing pattern of Yellow and Blue LEDs while the Black Box memory is cleared; this takes several seconds followed by a single beep. You should hear three starting beeps with the Red LED flashing briefly. At the end you should have Green and Red LEDs on. The Red LED means that no GPS signals are being received. UAVXGS will speak any alarms outstanding if arming fails — button top centre of GS window.
+You will see a dancing pattern of Yellow and Blue LEDs while the Black Box memory is cleared; this takes several seconds followed by a single beep. You should hear three starting beeps with the Red LED flashing briefly. At the end you should have Green and Red LEDs on. The Red LED means that no GPS signals are being received. UAVXGUI will speak any alarms outstanding if arming fails - button top centre of GS window.
 
 Advance the throttle and all motors should start. Run the motors more very slowly as you can damage them if you run at high speed without props. Listening carefully move your controls and verify that if you move the aileron right that the left motor increases speed and the right motor slows down. The same for elevator. Rudder left should slow down the front/back motors and speed up the left/right motors by the same amount.
 
@@ -140,7 +142,7 @@ http://www.rcgroups.com/forums/showthread.php?t=1093510
 
 Connect the GPS to the former Rx3 and Rx4. 
 
-If you have a GPS selected in UAVXGS the aircraft will not fly until a stable GPS signal is received.
+If you have a GPS selected in UAVXGUI the aircraft will not fly until a stable GPS signal is received.
 
 ### Accelerometer Neutral Fine Tuning ###
 
