@@ -22,3 +22,4 @@ You should **not** use the Tx trims which should be set to NEUTRAL (no trims). C
 If you continue to hold the stick at the extreme after the first LED flash and beep, the change will be repeated every quarter of a second accompanied by another beep and flash.
 
 
+

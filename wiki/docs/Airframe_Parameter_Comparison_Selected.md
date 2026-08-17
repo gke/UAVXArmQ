@@ -16,12 +16,12 @@ Param & Ecks 220 & Ecks 0800 Mod & Ecks 0800 Sport & Ecks 1kg Mod & Ecks 1kg Spo
 \endhead
 RollRateKp & 0.1 & 0.15 & 0.24 & 0.2 & 0.3 & 0.095 & 0.16 & 0.095 & 0.16 \\
 AltPosKi & 0.0046 & 0.003 & 0.004 & 0.003 & 0.004 & 0.00276 & 0.00092 & 0.00184 & \textbf{0.0138} \\
-RollAngleKp & 7 & 7 & \textbf{8} & 7 & \textbf{8} & \textbf{5.75} & 7 & \textbf{5.75} & 7 \\
-RollAngleIntLimit & 0.002618 & 0.003 & \textbf{0.005} & 0.003 & \textbf{0.005} & 0.002618 & \textbf{0.00733} & 0.002618 & \textbf{0.005236} \\
+RollAngleQKp & 7 & 7 & \textbf{8} & 7 & \textbf{8} & \textbf{5.75} & 7 & \textbf{5.75} & 7 \\
+RollAngleQIntLimit & 0.002618 & 0.003 & \textbf{0.005} & 0.003 & \textbf{0.005} & 0.002618 & \textbf{0.00733} & 0.002618 & \textbf{0.005236} \\
 PitchRateKp & 0.1 & 0.18 & 0.28 & 0.22 & 0.32 & 0.095 & 0.16 & 0.095 & 0.16 \\
 AltPosKp & 0.5124 & 0.45 & 0.5 & 0.55 & 0.65 & 0.4392 & \textbf{0.1464} & 0.4575 & \textbf{0.915} \\
-PitchAngleKp & 7 & 7 & \textbf{8} & 7 & \textbf{8} & \textbf{5.75} & 7 & \textbf{5.75} & 7 \\
-PitchAngleIntLimit & 0.002618 & 0.003 & \textbf{0.005} & 0.003 & \textbf{0.005} & 0.002618 & \textbf{0.00733} & 0.002618 & \textbf{0.005236} \\
+PitchAngleQKp & 7 & 7 & \textbf{8} & 7 & \textbf{8} & \textbf{5.75} & 7 & \textbf{5.75} & 7 \\
+PitchAngleQIntLimit & 0.002618 & 0.003 & \textbf{0.005} & 0.003 & \textbf{0.005} & 0.002618 & \textbf{0.00733} & 0.002618 & \textbf{0.005236} \\
 YawRateKp & 0.1 & 0.18 & 0.26 & 0.15 & 0.25 & 0.125 & 0.2 & 0.125 & 0.2 \\
 RollRateKd & 0.0045 & 0.012 & 0.008 & 0.006 & 0.004 & 0.004 & 0.006 & 0.004 & 0.006 \\
 BbLogType & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
@@ -32,8 +32,8 @@ EstCruiseThr & 0.54 & 0.55 & 0.55 & 0.6 & 0.6 & 0.5 & \textbf{0.31} & \textbf{0.
 StickHysteresis & 0.02 & 0.02 & 0.02 & 0.02 & 0.02 & 0.02 & \textbf{0.04} & \textbf{0.03} & 0.02 \\
 FwClimbThrottle & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
 PercentIdleThr & 0.05 & 0.05 & 0.05 & 0.05 & 0.05 & \textbf{0.1} & \textbf{0.1} & 0.05 & \textbf{0.1} \\
-RollAngleKi & 0.25 & 0.25 & 0.2 & 0.25 & 0.2 & 0.15 & 0.2 & 0.15 & 0.1 \\
-PitchAngleKi & 0.25 & 0.25 & 0.2 & 0.25 & 0.2 & 0.15 & 0.1 & 0.15 & 0.1 \\
+RollAngleQKi & 0.25 & 0.25 & 0.2 & 0.25 & 0.2 & 0.15 & 0.2 & 0.15 & 0.1 \\
+PitchAngleQKi & 0.25 & 0.25 & 0.2 & 0.25 & 0.2 & 0.15 & 0.1 & 0.15 & 0.1 \\
 PitchCamKp & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
 ServoLpfHz & 25 & 25 & 25 & 25 & 25 & 25 & \textbf{10} & 25 & 25 \\
 PitchRateKd & 0.0045 & 0.012 & 0.008 & 0.008 & 0.005 & 0.004 & 0.006 & 0.004 & 0.006 \\
@@ -94,9 +94,9 @@ ThrottleGainRate & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
 RxAux5Ch & 9 & \textbf{0} & \textbf{0} & \textbf{0} & \textbf{0} & 9 & 9 & 9 & 9 \\
 RxAux6Ch & 7 & 0 & 0 & 0 & 0 & 10 & 10 & 10 & 11 \\
 RxAux7Ch & 11 & 0 & 0 & 0 & 0 & 7 & 4 & 4 & 4 \\
-YawAngleKp & 3 & \textbf{6} & \textbf{8} & 4 & 5 & 3 & 3 & 3 & 2.25 \\
-YawAngleKi & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 \\
-YawAngleIntLimit & 0.008727 & \textbf{0.025} & \textbf{0.03} & \textbf{0.015} & \textbf{0.02} & 0.008727 & 0.008727 & 0.008727 & 0.008727 \\
+YawAngleQKp & 3 & \textbf{6} & \textbf{8} & 4 & 5 & 3 & 3 & 3 & 2.25 \\
+YawAngleQKi & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 \\
+YawAngleQIntLimit & 0.008727 & \textbf{0.025} & \textbf{0.03} & \textbf{0.015} & \textbf{0.02} & 0.008727 & 0.008727 & 0.008727 & 0.008727 \\
 AltPosIntLimit & 0.5 & \textbf{0.25} & \textbf{0.3} & \textbf{0.35} & \textbf{0.4} & 0.5 & 0.5 & 0.5 & 0.5 \\
 MotorStopSel & 0 & 0 & 0 & 0 & 0 & \textbf{0.002618} & 0 & 0 & 0 \\
 AltThrottleCompLimit & 0.2 & 0.25 & 0.28 & 0.22 & 0.24 & 0.06 & 0.12 & 0.05 & 0.02 \\
@@ -117,6 +117,7 @@ DiveRecoverAlt & - & 0 & 0 & 0 & 0 & - & - & - & - \\
 
 - Outlier detection: values > 3 MAD from the median are bolded.
 - Unused/reserved parameters omitted.
+
 
 
 

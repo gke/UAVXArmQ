@@ -30,8 +30,8 @@ pipeline:
 
 - **Estimator output**: Madgwick filter produces a unit quaternion. The
   optional Kalman filter path also uses quaternion state.
-- **Control input**: Per-axis `ROLL_ANGLE_KP`, `PITCH_ANGLE_KP`,
-  `YAW_ANGLE_KP` (tags 2/7/96) scale quaternion error directly as
+- **Control input**: Per-axis `ROLL_ANGLE_Q_KP`, `PITCH_ANGLE_Q_KP`,
+  `YAW_ANGLE_Q_KP` (tags 2/7/96) scale quaternion error directly as
   `2·Qa·P.Kp`. A single global `QUAT_GAIN` (tag 75) was tried first but
   replaced; it now targets `gUnused` and has no effect. The quaternion error
   `q_desired × q_current^{-1}` provides a singularity-free rotation vector.
@@ -288,6 +288,7 @@ RC/Arming & `rc.c` & `rc.c` (consolidated) \\
 Failsafe & `rc.c` & `rc.c` (enhanced override) \\
 \bottomrule
 \end{longtable}
+
 
 
 

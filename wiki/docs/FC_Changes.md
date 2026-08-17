@@ -21,7 +21,7 @@ Specific changes:
 
 - **Attitude estimator**: The complementary filter (Madgwick) outputs a unit quaternion instead of Euler angles. The optional Kalman filter path also uses quaternion state.
 - **Control pipeline**: Rate and angle controllers receive quaternion error directly, avoiding gimbal-lock-prone Euler decomposition. The `Quat2Euler()` conversion is only called for telemetry output and user-facing displays.
-- **QUAT_GAIN parameter** (tag 75): Initially introduced as a single global quaternion error scale, later replaced by per-axis `ROLL_ANGLE_KP`, `PITCH_ANGLE_KP`, `YAW_ANGLE_KP` (tags 2/7/96). `QUAT_GAIN` now writes to `gUnused` and has no effect on flight behaviour.
+- **QUAT_GAIN parameter** (tag 75): Initially introduced as a single global quaternion error scale, later replaced by per-axis `ROLL_ANGLE_Q_KP`, `PITCH_ANGLE_Q_KP`, `YAW_ANGLE_Q_KP` (tags 2/7/96). `QUAT_GAIN` now writes to `gUnused` and has no effect on flight behaviour.
 
 ### Why
 
@@ -170,10 +170,20 @@ Presets: NavQual = 1650 (65 %), NavMode = 2000 (RTH), sticks = 1500 (neutral), t
 
 At the end of the NavQual block, `RCFailsafe || RCSignalLost` forces AngleMode + AltHold regardless of switch positions. PassThru overrides all failsafe behaviour (direct sticks, no nav, for fixed-wing manual recovery).
 
-### Future
+### Failsafe Action (configurable)
 
-A configurable failsafe action parameter is planned (enum in FC: `FS_Action: RTH / Land / MotorsOff`; combo box in GCS).
+The failsafe behaviour is now selected by the `FAILSAFE_ACTION` parameter (tag 117), exposed as a combo box in the GCS:
 
+\begin{longtable}{>{\raggedright\arraybackslash}p{3.0cm} >{\raggedleft\arraybackslash}p{13.5cm}}
+\toprule
+Value & Action \\
+\midrule
+\endhead
+0 & RTH — failsafe presets drive nav (NavMode=2000, NavQual=2000) \\
+1 & Land — `InitiateDescent()` forced landing \\
+2 & Motors Off — `InitiateShutdown()` kills drives immediately \\
+\bottomrule
+\end{longtable}
 ---
 
 ## 8. Tuning Telemetry Packet (Tag 57)
@@ -214,8 +224,49 @@ Several navigation parameters were added or modified:
 
 These parameters provide finer-grained control over autonomous navigation behaviour, replacing hard-coded constants with tunable values accessible from the GCS parameter editor.
 
+---
 
+## 10. Flash Boot Diagnostics
 
+### What
+
+`LoadParameters()` now classifies the outcome of every boot with a new `BootDiag` parameter (tag 104):
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{3.0cm} >{\raggedleft\arraybackslash}p{13.5cm}}
+\toprule
+BootDiag & Meaning \\
+\midrule
+\endhead
+1 & Config restored from flash \\
+2 & Defaults loaded — magic mismatch (layout changed) \\
+3 & Defaults loaded — param table CRC mismatch (table changed) \\
+4 & Defaults loaded — checksum mismatch (corrupt) \\
+5 & Defaults loaded — clean flash (all 0xFF) \\
+\bottomrule
+\end{longtable}
+The clean-flash case is detected by a new `IsFlashClean()` scan, because an all-0xFF block passes the XOR checksum (odd byte count) yet contains no valid config. `CONFIG_MAGIC` was bumped to `0xFEEDBEE3` for this change.
+
+### Why
+
+Previously a fresh chip or fully-erased flash produced an ambiguous boot — the XOR checksum did not distinguish "erased" from "valid". Operators could not tell why their settings vanished, and a magic-mismatch boot could silently preserve misaligned calibration bytes. `BootDiag` gives a one-glance diagnosis of every boot outcome, and a magic mismatch now always clears calibration (old-layout cal bytes are misaligned garbage).
+
+---
+
+## 11. Loss-of-Altitude-Control Detector (ExcessLift)
+
+### What
+
+`CheckAltHoldAlarm()` in `control.c` sets a new `F.ExcessLift` flag (telemetry Flags byte 5, bit 6) when the alt-hold controller is being overpowered:
+
+- Throttle feedback is pinned at its negative limit (`AltHoldThrComp <= -(pMaxAltHoldThrComp × 0.75)`)
+- Yet the aircraft is still climbing (`ROCTrack > 0.2 m/s`)
+- Soaring, thermalling, and boost-climb never set it (they intend to climb)
+
+When set, an optional beeper alarm (`AltHoldAlarmActive`, gated by the `USE_ALT_HOLD_ALARM` config bit) notifies the pilot.
+
+### Why
+
+This is a live loss-of-alt-control detector, distinct from a pilot height limit. If external lift (e.g., thermal updraft) exceeds the alt-hold's authority, the FC is no longer in control of altitude — a condition worth flagging. Soaring/thermalling are explicitly excluded because they climb by design, and this is not a lift detector (soaring's `CommenceThermalling` already owns that role).
 
 
 

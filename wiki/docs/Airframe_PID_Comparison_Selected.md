@@ -31,9 +31,9 @@ Angle Kp controls attitude stiffness (return-to-level force). Ki eliminates stea
 Param & Ecks 220 & Ecks 0800 Mod & Ecks 0800 Sport & Ecks 1kg Mod & Ecks 1kg Sport & Rok's Quad & Ken's 450 & Ken's Alpha & Ken's LadyBug \\
 \midrule
 \endhead
-RollAngleKp & 7 & 7 & 8 & 7 & 8 & 5.75 & 7 & 5.75 & 7 \\
-RollAngleKi & 0.25 & 0.25 & 0.2 & 0.25 & 0.2 & 0.15 & 0.2 & 0.15 & 0.1 \\
-RollAngleIntLimit & 0.002618 & 0.003 & 0.005 & 0.003 & 0.005 & 0.002618 & 0.00733 & 0.002618 & 0.005236 \\
+RollAngleQKp & 7 & 7 & 8 & 7 & 8 & 5.75 & 7 & 5.75 & 7 \\
+RollAngleQKi & 0.25 & 0.25 & 0.2 & 0.25 & 0.2 & 0.15 & 0.2 & 0.15 & 0.1 \\
+RollAngleQIntLimit & 0.002618 & 0.003 & 0.005 & 0.003 & 0.005 & 0.002618 & 0.00733 & 0.002618 & 0.005236 \\
 \bottomrule
 \end{longtable}
 ## Pitch Axis
@@ -47,9 +47,9 @@ Param & Ecks 220 & Ecks 0800 Mod & Ecks 0800 Sport & Ecks 1kg Mod & Ecks 1kg Spo
 \endhead
 PitchRateKp & 0.1 & 0.18 & 0.28 & 0.22 & 0.32 & 0.095 & 0.16 & 0.095 & 0.16 \\
 PitchRateKd & 0.0045 & 0.012 & 0.008 & 0.008 & 0.005 & 0.004 & 0.006 & 0.004 & 0.006 \\
-PitchAngleKp & 7 & 7 & 8 & 7 & 8 & 5.75 & 7 & 5.75 & 7 \\
-PitchAngleKi & 0.25 & 0.25 & 0.2 & 0.25 & 0.2 & 0.15 & 0.1 & 0.15 & 0.1 \\
-PitchAngleIntLimit & 0.002618 & 0.003 & 0.005 & 0.003 & 0.005 & 0.002618 & 0.00733 & 0.002618 & 0.005236 \\
+PitchAngleQKp & 7 & 7 & 8 & 7 & 8 & 5.75 & 7 & 5.75 & 7 \\
+PitchAngleQKi & 0.25 & 0.25 & 0.2 & 0.25 & 0.2 & 0.15 & 0.1 & 0.15 & 0.1 \\
+PitchAngleQIntLimit & 0.002618 & 0.003 & 0.005 & 0.003 & 0.005 & 0.002618 & 0.00733 & 0.002618 & 0.005236 \\
 \bottomrule
 \end{longtable}
 ## Yaw Axis
@@ -63,9 +63,9 @@ Param & Ecks 220 & Ecks 0800 Mod & Ecks 0800 Sport & Ecks 1kg Mod & Ecks 1kg Spo
 \endhead
 YawRateKp & 0.1 & 0.18 & 0.26 & 0.15 & 0.25 & 0.125 & 0.2 & 0.125 & 0.2 \\
 YawRateKd & 0.001125 & 0.008 & 0.005 & 0.002 & 0.002 & 0.001125 & 0.001125 & 0.001125 & 0.000125 \\
-YawAngleKp & 3 & 6 & 8 & 4 & 5 & 3 & 3 & 3 & 2.25 \\
-YawAngleKi & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 \\
-YawAngleIntLimit & 0.008727 & 0.025 & 0.03 & 0.015 & 0.02 & 0.008727 & 0.008727 & 0.008727 & 0.008727 \\
+YawAngleQKp & 3 & 6 & 8 & 4 & 5 & 3 & 3 & 3 & 2.25 \\
+YawAngleQKi & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 & 0.25 \\
+YawAngleQIntLimit & 0.008727 & 0.025 & 0.03 & 0.015 & 0.02 & 0.008727 & 0.008727 & 0.008727 & 0.008727 \\
 \bottomrule
 \end{longtable}
 ## Navigation Gains
@@ -120,4 +120,5 @@ MaxPitchRate & 10.472 & 3.14159 & 6.28319 & 3.14159 & 6.28319 & 10.472 & 10.472 
 - All values in FC-native units (radians for angles, volts, fractions).
 - Ecks 220 is the original default from originaldefaults.h.
 - Ecks 0800/1kg variants are manually tuned `.af` files in the GCS airframes directory.
+
 
