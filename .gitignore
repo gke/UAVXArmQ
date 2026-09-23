@@ -2,12 +2,11 @@
 !.gitignore
 !obj/
 obj/*
-!obj/UAVXF4V3Q/
-!obj/SPEEDYF4WINGMINIQ/
-obj/UAVXF4V3Q/*
-!obj/UAVXF4V3Q/*.bin
-obj/SPEEDYF4WINGMINIQ/*
-!obj/SPEEDYF4WINGMINIQ/*.bin
+!obj/*/
+obj/*/*
+!obj/*/*.bin
+!obj/*/*.elf
+!obj/*/*.map
 !wiki/
 wiki/*
 !wiki/docs/
