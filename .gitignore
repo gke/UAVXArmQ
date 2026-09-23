@@ -1,16 +1,8 @@
 *
 !.gitignore
+!README.md
 !obj/
 obj/*
 !obj/*/
 obj/*/*
-!obj/*/*.bin
-!obj/*/*.elf
 !obj/*/*.hex
-!obj/*/*.map
-!wiki/
-wiki/*
-!wiki/docs/
-wiki/docs/*
-!wiki/docs/*.md
-!wiki/docs/*.pdf

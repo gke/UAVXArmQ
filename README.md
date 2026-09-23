@@ -1,30 +1,19 @@
 # UAVXArmQ Firmware Releases
 
-Firmware binaries and documentation for UAVXArmQ flight controllers.
+Intel HEX firmware images for UAVXArmQ flight controllers.
 
 ## Firmware
 
 | Target | File |
 |--------|------|
-| BLUEBERRYF405 | BLUEBERRYF405Q_r0.bin, BLUEBERRYF405Q_r0.hex |
-| BLUEBERRYF405 | BLUEBERRYF405Q_r67.bin |
-| DEVEBOXF4 | DEVEBOXF4Q_r0.bin, DEVEBOXF4Q_r0.hex |
-| DEVEBOXF4 | DEVEBOXF4Q_r67.bin |
-| FLYINGRCF4WINGMINI | FLYINGRCF4WINGMINIQ_r0.bin, FLYINGRCF4WINGMINIQ_r0.hex |
-| FLYINGRCF4WINGMINI | FLYINGRCF4WINGMINIQ_r67.bin |
-| MATEKF411WING | MATEKF411WINGQ_r0.bin, MATEKF411WINGQ_r0.hex |
-| MATEKF411WING | MATEKF411WINGQ_r67.bin |
-| SPEEDYBEEF405WING | SPEEDYBEEF405WINGQ_r0.bin, SPEEDYBEEF405WINGQ_r0.hex |
-| SPEEDYBEEF405WING | SPEEDYBEEF405WINGQ_r67.bin |
-| UAVXF4V3 | UAVXF4V3Q_r0.bin, UAVXF4V3Q_r0.hex |
-| UAVXF4V3 | UAVXF4V3Q_r67.bin |
-| UAVXF4V4 | UAVXF4V4Q_r0.bin, UAVXF4V4Q_r0.hex |
-| UAVXF4V4 | UAVXF4V4Q_r67.bin |
+| BLUEBERRYF405 | BLUEBERRYF405Q_r0.hex |
+| DEVEBOXF4 | DEVEBOXF4Q_r0.hex |
+| FLYINGRCF4WINGMINI | FLYINGRCF4WINGMINIQ_r0.hex |
+| MATEKF411WING | MATEKF411WINGQ_r0.hex |
+| SPEEDYBEEF405WING | SPEEDYBEEF405WINGQ_r0.hex |
+| UAVXF4V3 | UAVXF4V3Q_r0.hex |
+| UAVXF4V4 | UAVXF4V4Q_r0.hex |
 
 ## Flashing
 
 Use the GCS DFU flasher or STM32 DFU bootloader.
-
-## Documentation
-
-See [wiki/docs/](wiki/docs/) for setup guides, flight modes, failsafe, and more.
