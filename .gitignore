@@ -6,6 +6,7 @@ obj/*
 obj/*/*
 !obj/*/*.bin
 !obj/*/*.elf
+!obj/*/*.hex
 !obj/*/*.map
 !wiki/
 wiki/*
