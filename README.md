@@ -4,8 +4,8 @@ Intel HEX firmware images for UAVXArmQ flight controllers.
 
 ## Firmware
 
-| Target | File |
-|--------|------|
+| Target | Files |
+|--------|-------|
 | BLUEBERRYF405 | BLUEBERRYF405Q_r0.hex |
 | DEVEBOXF4 | DEVEBOXF4Q_r0.hex |
 | FLYINGRCF4WINGMINI | FLYINGRCF4WINGMINIQ_r0.hex |
@@ -17,3 +17,6 @@ Intel HEX firmware images for UAVXArmQ flight controllers.
 ## Flashing
 
 Use the GCS DFU flasher or STM32 DFU bootloader.
+
+The repo intentionally holds only the compiled `.hex` images — no sources,
+build intermediates, wiki, or scripts are published.
