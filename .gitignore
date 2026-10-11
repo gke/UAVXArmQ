@@ -1,6 +1,7 @@
 *
 !.gitignore
 !README.md
+!HISTORY.md
 !obj/
 obj/*
 !obj/*/
