@@ -6,4 +6,4 @@
 obj/*
 !obj/*/
 obj/*/*
-!obj/*/*.hex
+!obj/*/*.bin
