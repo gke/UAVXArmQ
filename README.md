@@ -27,7 +27,7 @@ This repository publishes prebuilt firmware images only — no source code.
 | FLYINGRCF4WINGMINI | FLYINGRCF4WINGMINIQ_r0.bin |
 | MATEKF411WING | MATEKF411WINGQ_r0.bin |
 | SPEEDYBEEF405WING | SPEEDYBEEF405WINGQ_r0.bin |
-| UAVXF4V3 | UAVXF4V3Q_r0.bin |
+| UAVXF4V3 | UAVXF4V3Q_r0.bin UAVXF4V3Q_r67.bin |
 | UAVXF4V4 | UAVXF4V4Q_r0.bin |
 
 ## Loading the firmware
