@@ -9,14 +9,18 @@ distributed under the GNU General Public License v3.
 
 This repository publishes prebuilt firmware images only — no source code.
 
+> **Development builds — use with care.** UAVXArmQ is still being revised.
+> These images are not flight-qualified releases: bench-check the airframe,
+> calibration and failsafe setup before flying.
+
 ## What's new
 
 - Unified float32 parameter set (all 128 parameters; no uint8 split)
 - Quaternion attitude and navigation; revised rate and tuning telemetry
 - Fixed-wing throttle cut, control-surface authority and commissioning defaults
 - Reassigned RC channels: arming/nav qualification, Dive (rapid descent),
-  Trace (diagnostic capture), RateGain (in-flight rate scaling)
-- Magnetometer warm-up retry
+  RateGain (in-flight rate scaling)
+- Magnetometer and GPS autodetect; Identify append-only ring
 
 ## Firmware
 
